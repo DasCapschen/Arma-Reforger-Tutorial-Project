@@ -1,0 +1,8 @@
+GameProject {
+ ID "TutorialProject"
+ GUID "596EA52E07FE1CE5"
+ TITLE "TutorialProject"
+ Dependencies {
+  "58D0FB3206B6F859"
+ }
+}

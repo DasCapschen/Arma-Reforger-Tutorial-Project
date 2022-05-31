@@ -1,0 +1,12 @@
+GenericWorldPPEffect PostProcess : "{3AFFB0B0EC055284}Prefabs/World/DefaultWorld/GenericWorldPP_Default.et" {
+ coords 4867.732 28.595 11772.691
+}
+TagManager TagManager : "{2FA9E172CAB1857A}Prefabs/MP/Managers/TagManager.et" {
+ coords 4869.294 28.595 11776.977
+}
+SCR_CameraManager CameraManager : "{33F9FD881E3700CC}Prefabs/World/Game/SCR_CameraManager.et" {
+ coords 4870.786 28.595 11776.895
+}
+RadioManagerEntity RadioManager : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
+ coords 4865.306 28.595 11770.587
+}

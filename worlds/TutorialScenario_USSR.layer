@@ -1,0 +1,166 @@
+SCR_AIGroup USSR_Group1 {
+ components {
+  AIBehaviorTreeComponent "{596EA5245C009744}" {
+   BehaviorTree "{082D5B0D5D33DB1D}AI/BehaviorTrees/Chimera/Group/Group.bt"
+  }
+  AIFormationComponent "{596EA5245C0096B7}" {
+   DefaultFormation "Wedge"
+   "Min Distance to Raytrace an Offset" 1
+  }
+  AIGroupMovementComponent "{596EA5245C0096BC}" {
+  }
+  AIGroupSteeringComponent "{596EA5245C0096A6}" {
+   "Using Railroad" 0
+  }
+  AIPathfindingComponent "{596EA5245C009693}" {
+   NavmeshProject "Soldiers"
+  }
+  Hierarchy "{596EA524FC9DC322}" {
+  }
+  SCR_AIConfigComponent "{596EA5245C009675}" {
+   m_Skill 1
+   m_aDefaultReactions {
+    SCR_AIIdleReaction "{596EA5245C0096E5}" {
+    }
+   }
+   m_aGoalReactions {
+    SCR_AIGoalReaction_Attack "{596EA5245C0096D5}" {
+     m_eType ATTACK
+    }
+    SCR_AIGoalReaction_GetInVehicle "{596EA5245C0096DD}" {
+     m_eType GET_IN_VEHICLE
+    }
+    SCR_AIGoalReaction_GetOutVehicle "{596EA5245C0096C4}" {
+     m_eType GET_OUT_VEHICLE
+    }
+    SCR_AIGoalReaction_Heal "{596EA5245C0096CA}" {
+     m_eType HEAL
+    }
+    SCR_AIGoalReaction_Defend "{596EA5245C009630}" {
+     m_eType DEFEND
+    }
+    SCR_AIGoalReaction_Move "{596EA5245C009636}" {
+     m_eType MOVE
+    }
+    SCR_AIGoalReaction_SeekAndDestroy "{596EA5245C00963B}" {
+     m_eType SEEK_DESTROY
+    }
+    SCR_AIGoalReaction_PerformAction "{596EA5245C009621}" {
+     m_eType PERFORM_ACTION
+    }
+    SCR_AIGoalReaction_Cancel "{596EA5245C009627}" {
+     m_eType CANCEL
+    }
+    SCR_AIGoalReaction_Follow "{596EA5245C009610}" {
+     m_eType FOLLOW
+    }
+   }
+   m_aInfoReactions {
+    SCR_AIInfoReaction_Contact "{596EA5245C009618}" {
+     m_eType CONTACT
+    }
+    SCR_AIInfoReaction_TargetEliminated "{596EA5245C009600}" {
+     m_eType TARGET_ELIMINATED
+    }
+    SCR_AIInfoReaction_Wounded "{596EA5245C009606}" {
+     m_eType WOUNDED
+    }
+    SCR_AIInfoReaction_TargetLost "{596EA5245C00960C}" {
+     m_eType TARGET_LOST
+    }
+    SCR_AIInfoReaction_NoAmmo "{596EA5245C009671}" {
+     m_eType NO_AMMO
+    }
+   }
+  }
+  SCR_AIGroupInfoComponent "{596EA5245C00967A}" {
+  }
+  SCR_AIGroupUtilityComponent "{596EA5245C00967E}" {
+  }
+  SCR_CallsignGroupComponent "{596EA5245C009663}" {
+  }
+  SCR_EditableGroupComponent "{596EA5245C009515}" {
+   m_EntityType GROUP
+   m_UIInfo SCR_EditableGroupUIInfo "{596EA5245C009585}" {
+    Name "#AR-Group_Default"
+    m_sFaction "USSR"
+    m_aAuthoredLabels {
+     4 10
+    }
+    m_MilitarySymbol SCR_MilitarySymbol "{596EA5245C0095A9}" {
+    }
+   }
+   m_bAutoRegister ALWAYS
+   m_vIconPos 0 5 0
+   m_Flags 9541
+  }
+  SCR_GroupIdentityComponent "{596EA5245C009576}" {
+   m_MilitarySymbol SCR_MilitarySymbol "{596EA5245C00950E}" {
+    m_Identity OPFOR
+   }
+  }
+  SCR_MailboxComponent "{596EA5245C00957E}" {
+  }
+  RplComponent "{596EA5245C009567}" {
+   Streamable Disabled
+  }
+ }
+ coords 4926.475 28.595 11721.376
+ DangerEventRange 200
+ m_faction "USSR"
+}
+SCR_ChimeraCharacter : "{631158F6898738A4}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_AAT.et" {
+ components {
+  AIControlComponent "{520EA1D2DB109F34}" {
+   EnableAI 1
+   ParentAIGroupName "USSR_Group1"
+  }
+ }
+ coords 4940.292 28.595 11715.938
+ angleY 57.2
+}
+SCR_AIGroup FireTeam1 : "{657590C1EC9E27D3}Prefabs/Groups/OPFOR/Group_USSR_LightFireTeam.et" {
+ components {
+  AIFormationComponent "{507E9DC12F541FE6}" {
+  }
+  SCR_AIConfigComponent "{512CC1759AE69D6D}" {
+   m_Skill 1
+  }
+ }
+ coords 4890.247 28.595 11662.247
+ angleY -65.533
+ m_aUnitPrefabSlots + {
+  "{976AC400219898FA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sharpshooter.et"
+ }
+ m_aStaticWaypoints {
+  "move1" "open_gate"
+ }
+ {
+  SCR_AIWaypoint move1 : "{750A8D1695BD6998}Prefabs/AI/Waypoints/AIWaypoint_Move.et" {
+   coords 39.447 -0.591 -55.011
+   angleY 65.533
+   CompletionRadius 2.7
+  }
+ }
+}
+SCR_ChimeraCharacter : "{976AC400219898FA}Prefabs/Characters/Factions/OPFOR/USSR_Army/Character_USSR_Sharpshooter.et" {
+ components {
+  AIControlComponent "{520EA1D2DB109F34}" {
+   EnableAI 1
+   ParentAIGroupName "USSR_Group1"
+  }
+ }
+ coords 4941.97 33.907 11685.08
+}
+Vehicle BTR1 : "{C012BB3488BEA0C2}Prefabs/Vehicles/Wheeled/BTR70/BTR70.et" {
+ components {
+  SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+   m_fVehicleDestroyDamage 22624.699
+  }
+ }
+ coords 4956.508 28.595 11787.359
+ angleY 98.04
+}
+Tree : "{C98A6C1C2372354E}Prefabs/Vegetation/Bush/b_corylus_avellana_1.et" {
+ coords 4947.843 0.001 11784.34
+}

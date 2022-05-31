@@ -1,0 +1,110 @@
+CAPS_SimpleTaskManager {
+ coords 3928.092 15.345 8425.751
+ taskNames {
+  "cars_destroyed_trigger" "compound_clear_trigger"
+ }
+ factionKey "US"
+}
+SCR_BaseTriggerEntity cars_destroyed_trigger {
+ components {
+  TaskScriptInvokerComponent "{597E79EDCCBB1EC9}" {
+  }
+ }
+ coords 3923.509 17.933 8431.655
+ TriggerActivationType "Every query"
+ PeriodicQueries 1
+ OnActivate ""\
+ "		IEntity uaz1 = GetGame().GetWorld().FindEntityByName(\"UAZ1\");"\
+ "		IEntity uaz2 = GetGame().GetWorld().FindEntityByName(\"UAZ2\");"\
+ "		"\
+ "		DamageManagerComponent uaz1dmg = DamageManagerComponent.Cast(uaz1.FindComponent(DamageManagerComponent));"\
+ "		DamageManagerComponent uaz2dmg = DamageManagerComponent.Cast(uaz2.FindComponent(DamageManagerComponent));"\
+ "		"\
+ "		if(uaz1dmg.GetHealth() <= 0 && uaz2dmg.GetHealth() <= 0)"\
+ "		{"\
+ "			TaskScriptInvokerComponent invokerComp = TaskScriptInvokerComponent.Cast(FindComponent(TaskScriptInvokerComponent));"\
+ "			invokerComp.GetOnTaskFinished().Invoke( GetName() );"\
+ "			Deactivate();"\
+ "		}"\
+ "	"
+}
+SCR_FactionControlTriggerEntity compound_clear_trigger {
+ components {
+  TaskScriptInvokerComponent "{597E79EE6BAC8BEE}" {
+  }
+ }
+ coords 3892.933 15.261 8447.466
+ TriggerShapeType Sphere
+ SphereRadius 83
+ TriggerActivationType "All changes"
+ PeriodicQueries 1
+ OnActivate ""\
+ "		SCR_PopUpNotification.GetInstance().PopupMsg(\"You cleared the compound!\", duration: 5.0, text2: \"Good job!\");"\
+ "		"\
+ "		TaskScriptInvokerComponent invokerComp = TaskScriptInvokerComponent.Cast(FindComponent(TaskScriptInvokerComponent));"\
+ "		invokerComp.GetOnTaskFinished().Invoke( GetName() );"\
+ "		Deactivate();"\
+ "	"
+ m_sOwnerFactionKey "US"
+ m_fFriendlyRatioLimit 1
+}
+$grp Vehicle : "{259EE7B78C51B624}Prefabs/Vehicles/Wheeled/UAZ469/UAZ469.et" {
+ UAZ1 {
+  components {
+   SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+    m_fVehicleDestroyDamage 11880.1
+   }
+  }
+  coords 3920.456 15.313 8417.832
+ }
+ UAZ2 {
+  components {
+   SCR_VehicleDamageManagerComponent "{141326E9FD94FE40}" {
+    m_fVehicleDestroyDamage 11880.1
+   }
+  }
+  coords 3915.365 15.313 8417.832
+  angleY 12.426
+ }
+}
+SCR_SpawnPoint : "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et" {
+ coords 4082.901 42.408 8719.254
+ angleY -103.598
+}
+SCR_AIGroup : "{8DE0C0830FE0C33D}Prefabs/Groups/OPFOR/Group_USSR_Base.et" {
+ coords 3891.347 15.279 8468.049
+ angleY 80.242
+ m_aStaticWaypoints {
+  "defend1"
+ }
+ {
+  SCR_DefendWaypoint defend1 : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+   coords 10.103 -0.167 -12.648
+   CompletionRadius 55
+  }
+ }
+}
+SCR_AIGroup : "{CB58D90EA14430AD}Prefabs/Groups/OPFOR/Group_USSR_SentryTeam.et" {
+ coords 3919.652 13.326 8538.092
+ m_aStaticWaypoints {
+  "patrol_cycle"
+ }
+ {
+  AIWaypointCycle patrol_cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+   coords 11.417 -0.61 25.707
+   CycleWaypoints {
+    "patrol1" "patrol2"
+   }
+   {
+    $grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+     patrol1 {
+      coords 22.5 0.485 35.013
+     }
+     patrol2 {
+      coords -12.584 0.485 -46.36
+     }
+    }
+   }
+  }
+ }
+}

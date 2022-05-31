@@ -1,0 +1,142 @@
+SCR_GameModeEditor GameMode : "{D2DE7F43D48A3667}Prefabs/MP/Modes/Editor/GameMode_Editor.et" {
+ components {
+  SCR_RespawnMenuHandlerComponent "{56C2E97AB5B2AC0C}" {
+   m_bAllowFactionChange 0
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_bDebugSkipSelection 1
+  }
+  SCR_ScoringSystemComponent "{56C2DDA6F5A5E41B}" {
+   Enabled 0
+   m_aActions {
+    EndGameAction "{597D59F8A7ADC43B}" {
+     m_eScoringMode SLM_Faction
+     m_iScoreLimit 3
+    }
+   }
+  }
+ }
+ coords 4865.206 28.595 11771.067
+ EOnFrame ""\
+ "		#ifdef GMSTATS"\
+ "		if (IsGameModeStatisticsEnabled())"\
+ "			UpdateStatistics(owner);"\
+ "		#endif"\
+ "		"\
+ "		// Allow to accumulate time in pre-game too."\
+ "		bool isPregame = IsPregameSet() && GetState() == SCR_EGameModeState.PREGAME;"\
+ "		// Increment elapsed time on every machine"\
+ "		bool isRunning = IsRunning();"\
+ "		if (isRunning || isPregame)"\
+ "			m_fTimeElapsed += timeSlice;"\
+ ""\
+ "		// Disable player controls if desired"\
+ "		// TODO@AS: This should be handled server-side and replicated to clients"\
+ "		// to prevent breaking this functionality, potential flaw"\
+ "		if (m_bAutoDisabledControls)"\
+ "		{"\
+ "			SetLocalControls(isRunning);"\
+ "		}"\
+ ""\
+ "		// As the authority make corrections as needed"\
+ "		if (IsMaster())"\
+ "		{"\
+ "			if (m_fTimeElapsed >= m_fLastTimeCorrection + m_fTimeCorrectionInterval)"\
+ "			{"\
+ "				Replication.BumpMe();"\
+ "				m_fLastTimeCorrection = m_fTimeElapsed;"\
+ "			}"\
+ ""\
+ "			// Make sure to start the game when pre-game preiod is enabled"\
+ "			if (isPregame && !IsManualPregameSet())"\
+ "			{"\
+ "				// Automatic handling checks condition"\
+ "				if (CanStartGameMode())"\
+ "					StartGameMode();"\
+ "			}"\
+ "			// Otherwise if game is bound by time limit, make sure to end on time limit"\
+ "			else if (isRunning && m_fTimeLimit > 0 && m_fTimeElapsed >= m_fTimeLimit)"\
+ "			{"\
+ "				// Clamp elapsed time to time limit"\
+ "				m_fTimeElapsed = Math.Clamp(m_fTimeElapsed, 0, m_fTimeLimit);"\
+ ""\
+ "				FactionManager facMan = GetGame().GetFactionManager();"\
+ "				Faction faction = facMan.GetFactionByKey(\"USSR\");"\
+ "				int ussrIndex = facMan.GetFactionIndex(faction);"\
+ "				"\
+ "				SCR_GameModeEndData data = SCR_GameModeEndData.CreateSimple(SCR_GameModeEndData.ENDREASON_EDITOR_FACTION_VICTORY, winnerFactionId: ussrIndex);"\
+ "				EndGameMode(data);"\
+ "			}"\
+ "		}"\
+ "		#ifdef GAME_MODE_DEBUG"\
+ "		if (DiagMenu.GetBool(SCR_DebugMenuID.DEBUGUI_GAME_MODE))"\
+ "		{"\
+ "			DrawDebugInfo();"\
+ "			if (s_bDrawPlayerInfo)"\
+ "				DrawPlayerDebugInfo();"\
+ "			if (s_bDrawSelectionInfo)"\
+ "				DrawSelectionInfo();"\
+ "		}"\
+ "		#endif"\
+ "	"
+ OnControllableDestroyed ""\
+ "		int playerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(entity);"\
+ "		int killerID = GetGame().GetPlayerManager().GetPlayerIdFromControlledEntity(instigator);"\
+ "		"\
+ "		//Print(\"PlayerID: \" + playerID + \" and killerID: \" + killerID, LogLevel.WARNING);"\
+ "		"\
+ "		/*if(playerID == 0 && killerID > 0)"\
+ "		{"\
+ "			m_ScoringSystemComponent.AddKill(killerID);"\
+ "		}*/"\
+ "		"\
+ "		super.OnControllableDestroyed(entity, instigator);"\
+ "	"
+ m_bAutoInitEditor 0
+ m_GameMasterTarget EVERYBODY
+ {
+  SCR_FactionManager FactionManager_Editor1 : "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
+   Factions {
+    SCR_Faction "{56DEAC40D2DBC8B1}" {
+     m_bIsPlayable 1
+    }
+   }
+  }
+  RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
+  }
+  ScriptedChatEntity : "{F69BC912AC8236F9}Prefabs/MP/ScriptedChatEntity.et" {
+  }
+  GarbageManager {
+   coords 0 0 0
+   CharacterLifetime 600
+   VehicleCollect 0
+   ItemLifetime 300
+  }
+  SCR_BaseTaskManager : "{87208DAD6F3C0DE2}Prefabs/MP/Managers/Tasks/TaskManager_Editor.et" {
+  }
+  SCR_LoadoutManager : "{AA4E7419A1FF65B0}Prefabs/MP/Managers/Loadouts/LoadoutManager_Base.et" {
+   coords 0 0 0
+   m_aPlayerLoadouts {
+    SCR_FactionPlayerLoadout "{596EA52FED2AB114}" {
+     m_sLoadoutName "Rifleman"
+     m_sLoadoutResource "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+     m_sAffiliatedFaction "US"
+    }
+    SCR_PlayerArsenalLoadout "{596EA52FD9FA4B43}" {
+     m_sLoadoutName "Saved Arsenal Loadout"
+     m_sLoadoutResource "{26A9756790131354}Prefabs/Characters/Factions/BLUFOR/US_Army/Character_US_Rifleman.et"
+     m_sAffiliatedFaction "US"
+    }
+   }
+  }
+ }
+}
+SCR_SpawnPoint : "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et" {
+ coords 4956.137 28.595 11792.281
+ angleY -179.737
+ m_fNoPlayerRadius 20
+ m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+  Name "My Spawn Point"
+  Description "At the Airport"
+ }
+}

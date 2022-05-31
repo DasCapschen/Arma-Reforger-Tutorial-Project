@@ -1,0 +1,9 @@
+SubScene {
+ Parent "worlds/Eden/Eden.ent"
+}
+Layer optional_managers {
+ Index 0
+}
+Layer required_managers {
+ Index 1
+}

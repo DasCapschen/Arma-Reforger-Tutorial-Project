@@ -1,0 +1,12 @@
+SubScene {
+ Parent "{EFFCDE0071E6E81C}worlds/ScenarioBase.ent"
+}
+Layer default {
+ Index 0
+}
+Layer USSR {
+ Index 1
+}
+Layer trigger_objective {
+ Index 2
+}
