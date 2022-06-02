@@ -35,10 +35,6 @@ CAPS_TaskManager {
  m_aSupportedTaskTypes {
   CAPS_TriggerTaskSupportClass "{5984F7D4427CC958}" {
   }
-  SCR_TriggerTaskSupportClass "{5984F7D669435040}" {
-  }
-  SCR_MoveTaskSupportClass "{5984F7D6647360E8}" {
-  }
  }
  {
   CAPS_TriggerTask Task1 {

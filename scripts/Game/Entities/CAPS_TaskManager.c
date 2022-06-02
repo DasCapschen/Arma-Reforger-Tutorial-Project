@@ -63,9 +63,7 @@ class CAPS_TaskManager : SCR_BaseTaskManager
 			if(task)
 			{
 				Faction taskFaction = facMan.GetFactionByKey(task.m_factionKey);
-				
 				Print("Setting Faction for Task " + task.GetName() + " to " + task.m_factionKey);
-				
 				SetTaskFaction(task, taskFaction);
 			}
 			
