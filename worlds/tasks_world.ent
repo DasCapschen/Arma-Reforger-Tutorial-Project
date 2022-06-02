@@ -4,6 +4,3 @@ SubScene {
 Layer gamemode {
  Index 0
 }
-Layer tasks {
- Index 1
-}

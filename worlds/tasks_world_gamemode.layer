@@ -24,44 +24,6 @@ CAPS_TaskManager {
   Hierarchy "{5984F7D56615A030}" {
   }
   SCR_TextsTaskManagerComponent "{5984F7D8D38B09C5}" {
-   m_aEntries {
-    SCR_TextsTaskManagerEntry "{5984F7D7A510B5C5}" {
-     m_TextType CUSTOM
-     m_aTexts {
-      SCR_UIInfo "{5984F7D79A14CC7E}" {
-       Name "CUSTOM"
-       Description "TASK"
-      }
-     }
-    }
-    SCR_TextsTaskManagerEntry "{5984F7D7977335F2}" {
-     m_TextType MOVE
-     m_aTexts {
-      SCR_UIInfo "{5984F7D79107CB35}" {
-       Name "MOVE"
-       Description "TASK"
-      }
-     }
-    }
-    SCR_TextsTaskManagerEntry "{5984F7D78B8ED648}" {
-     m_TextType DEFEND
-     m_aTexts {
-      SCR_UIInfo "{5984F7D7827213EF}" {
-       Name "DEFEND"
-       Description "TASK"
-      }
-     }
-    }
-    SCR_TextsTaskManagerEntry "{5984F7D78BC3CA2D}" {
-     m_TextType ATTACK
-     m_aTexts {
-      SCR_UIInfo "{5984F7D78066B4FE}" {
-       Name "ATTACK"
-       Description "TASK"
-      }
-     }
-    }
-   }
   }
   SCR_UITaskManagerComponent "{5984F7D8D1927614}" {
   }
@@ -105,6 +67,7 @@ CAPS_TaskManager {
      DrawShape 1
      ShapeColor 1 0 0 0.404
      TriggerActivationType "All changes"
+     PeriodicQueries 1
      ClassFilter "ChimeraCharacter"
      m_sOwnerFactionKey "US"
     }
