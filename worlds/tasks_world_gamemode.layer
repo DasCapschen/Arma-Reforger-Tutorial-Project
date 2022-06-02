@@ -1,0 +1,114 @@
+SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
+ components {
+  SCR_AutomaticRespawnHandlerComponent "{56B4EA4DA0EEFF85}" {
+   m_iForcedFaction 0
+   m_iForcedLoadout 3
+  }
+ }
+ coords 4909.733 28.595 11768.643
+ {
+  SCR_FactionManager FactionManager_USxUSSR1 : "{589540B35EBA8CDC}Prefabs/MP/Managers/Factions/FactionManager_USxUSSR.et" {
+   coords 0 0 0
+  }
+  SCR_SpawnPoint : "{5A2220DD0C16958B}Prefabs/MP/Spawning/SpawnPoint_US.et" {
+   coords 5.005 0 -2.133
+   angleY -96.091
+  }
+  SCR_LoadoutManager : "{97EF4C1A41F63DDB}Prefabs/MP/Managers/Loadouts/LoadoutManager_USxUSSR.et" {
+   coords 0 0 0
+  }
+ }
+}
+CAPS_TaskManager {
+ components {
+  Hierarchy "{5984F7D56615A030}" {
+  }
+  SCR_TextsTaskManagerComponent "{5984F7D8D38B09C5}" {
+   m_aEntries {
+    SCR_TextsTaskManagerEntry "{5984F7D7A510B5C5}" {
+     m_TextType CUSTOM
+     m_aTexts {
+      SCR_UIInfo "{5984F7D79A14CC7E}" {
+       Name "CUSTOM"
+       Description "TASK"
+      }
+     }
+    }
+    SCR_TextsTaskManagerEntry "{5984F7D7977335F2}" {
+     m_TextType MOVE
+     m_aTexts {
+      SCR_UIInfo "{5984F7D79107CB35}" {
+       Name "MOVE"
+       Description "TASK"
+      }
+     }
+    }
+    SCR_TextsTaskManagerEntry "{5984F7D78B8ED648}" {
+     m_TextType DEFEND
+     m_aTexts {
+      SCR_UIInfo "{5984F7D7827213EF}" {
+       Name "DEFEND"
+       Description "TASK"
+      }
+     }
+    }
+    SCR_TextsTaskManagerEntry "{5984F7D78BC3CA2D}" {
+     m_TextType ATTACK
+     m_aTexts {
+      SCR_UIInfo "{5984F7D78066B4FE}" {
+       Name "ATTACK"
+       Description "TASK"
+      }
+     }
+    }
+   }
+  }
+  SCR_UITaskManagerComponent "{5984F7D8D1927614}" {
+  }
+  RplComponent "{5984F7D8D5A487D8}" {
+   Streamable Disabled
+  }
+ }
+ coords 4907.403 28.595 11767.805
+ m_aSupportedTaskTypes {
+  CAPS_TriggerTaskSupportClass "{5984F7D4427CC958}" {
+  }
+  SCR_TriggerTaskSupportClass "{5984F7D669435040}" {
+  }
+  SCR_MoveTaskSupportClass "{5984F7D6647360E8}" {
+  }
+ }
+ {
+  CAPS_TriggerTask Task1 {
+   components {
+    Hierarchy "{5984F7D565664C37}" {
+    }
+    SCR_MapDescriptorComponent "{5984F7D648F9D2F2}" {
+     DisplayName "Task"
+    }
+   }
+   coords 2.058 0 3.025
+   m_sName "Move here"
+   m_sDescription "Please"
+   m_bNotifyAssignment 1
+   m_bNotifyUnassign 1
+   m_factionKey "US"
+   {
+    SCR_BaseFactionTriggerEntity {
+     components {
+      Hierarchy "{5984F7DB4027DA16}" {
+      }
+     }
+     coords -7.635 0 -0.242
+     TriggerShapeType Sphere
+     SphereRadius 3.2
+     DrawShape 1
+     ShapeColor 1 0 0 0.404
+     TriggerActivationType "All changes"
+     ClassFilter "ChimeraCharacter"
+     m_sOwnerFactionKey "US"
+    }
+   }
+  }
+ }
+}
