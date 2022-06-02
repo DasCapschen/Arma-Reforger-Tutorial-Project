@@ -1,0 +1,61 @@
+CAPS_TaskManager {
+ ID "59853154BD49E2B1"
+ components {
+  Hierarchy "{5984F7D56615A030}" {
+  }
+  SCR_TextsTaskManagerComponent "{5984F7D8D38B09C5}" {
+   m_aEntries {
+    SCR_TextsTaskManagerEntry "{5984F7D7A510B5C5}" {
+     m_TextType CUSTOM
+     m_aTexts {
+      SCR_UIInfo "{5984F7D79A14CC7E}" {
+       Name "CUSTOM"
+       Description "TASK"
+      }
+     }
+    }
+    SCR_TextsTaskManagerEntry "{5984F7D7977335F2}" {
+     m_TextType MOVE
+     m_aTexts {
+      SCR_UIInfo "{5984F7D79107CB35}" {
+       Name "MOVE"
+       Description "TASK"
+      }
+     }
+    }
+    SCR_TextsTaskManagerEntry "{5984F7D78B8ED648}" {
+     m_TextType DEFEND
+     m_aTexts {
+      SCR_UIInfo "{5984F7D7827213EF}" {
+       Name "DEFEND"
+       Description "TASK"
+      }
+     }
+    }
+    SCR_TextsTaskManagerEntry "{5984F7D78BC3CA2D}" {
+     m_TextType ATTACK
+     m_aTexts {
+      SCR_UIInfo "{5984F7D78066B4FE}" {
+       Name "ATTACK"
+       Description "TASK"
+      }
+     }
+    }
+   }
+  }
+  SCR_UITaskManagerComponent "{5984F7D8D1927614}" {
+  }
+  RplComponent "{5984F7D8D5A487D8}" {
+   Streamable Disabled
+  }
+ }
+ coords 4907.403 28.595 11767.805
+ m_aSupportedTaskTypes {
+  CAPS_TriggerTaskSupportClass "{5984F7D4427CC958}" {
+  }
+  SCR_TriggerTaskSupportClass "{5984F7D669435040}" {
+  }
+  SCR_MoveTaskSupportClass "{5984F7D6647360E8}" {
+  }
+ }
+}

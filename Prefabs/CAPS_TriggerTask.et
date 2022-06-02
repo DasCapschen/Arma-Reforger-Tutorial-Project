@@ -1,0 +1,33 @@
+CAPS_TriggerTask {
+ ID "59853154B12A6461"
+ components {
+  Hierarchy "{5984F7D565664C37}" {
+  }
+  SCR_MapDescriptorComponent "{5984F7D648F9D2F2}" {
+   DisplayName "Task"
+  }
+ }
+ coords 4909.461 28.595 11770.83
+ m_sName "Move here"
+ m_sDescription "Please"
+ m_bNotifyAssignment 1
+ m_bNotifyUnassign 1
+ m_factionKey "US"
+ {
+  SCR_BaseFactionTriggerEntity {
+   ID "59853154B12AC4DE"
+   components {
+    Hierarchy "{5984F7DB4027DA16}" {
+    }
+   }
+   coords -7.635 0 -0.242
+   TriggerShapeType Sphere
+   SphereRadius 3.2
+   DrawShape 1
+   ShapeColor 1 0 0 0.404
+   TriggerActivationType "All changes"
+   ClassFilter "ChimeraCharacter"
+   m_sOwnerFactionKey "US"
+  }
+ }
+}
