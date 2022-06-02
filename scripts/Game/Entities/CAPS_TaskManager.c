@@ -12,18 +12,7 @@ class CAPS_TaskManager : SCR_BaseTaskManager
 {
 	override void EOnInit(IEntity owner)
 	{
-		// is owner the same as this?
 		super.EOnInit(owner);
-		
-		// just for curiosity
-		if(owner == this)
-		{
-			Print("Owner is same as this");
-		}
-		if(owner == GetParent())
-		{
-			Print("Owner is same as parent object");
-		}
 		
 		// Do not initialize these tasks out of runtime
 		// I guess this stops EOnInit from running in Workbench World Editor?
@@ -31,21 +20,20 @@ class CAPS_TaskManager : SCR_BaseTaskManager
 			return;
 		
 		// only run this code on master ("server")
-		if (!m_RplComponent.IsMaster())
-			return;
-		
-		SetFactionForTasks();
+		if (m_RplComponent.IsMaster())
+		{
+			SetFactionForTasks();
+		}
 	}
 	
-	////////////////////////////////////////////////////////////////
-	///// CALLED ON EVERY MACHINE FOR EVERY PLAYER REGISTERED //////
-	// INCLUDING WHEN JIP, PREVIOUS REGISTERED PLAYERS ARE CALLED //
-	////////////////////////////////////////////////////////////////
+	// this is the magic function that makes Tasks replicate properly :)
+	// called on every machine for each player registered, including JIP
+	// previously reigstered players are called again on JIP
 	protected override void OnPlayerRegistered(int registeredPlayerID)
 	{
 		super.OnPlayerRegistered(registeredPlayerID);
 
-		// Reset faction on initial tasks for JIP (Authority only)
+		// Set Task Factions for newly joined players
 		if (m_RplComponent.IsMaster())
 		{
 			SetFactionForTasks();			
