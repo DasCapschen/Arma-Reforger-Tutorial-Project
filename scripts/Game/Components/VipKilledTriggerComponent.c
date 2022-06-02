@@ -65,25 +65,25 @@ class VipKilledTriggerComponent : ScriptComponent
 				continue;
 			}
 			
-			ScriptedDamageManagerComponent damageManager = ScriptedDamageManagerComponent.Cast(vip.FindComponent(ScriptedDamageManagerComponent));
-			if(!damageManager) {
-				Print("VIP with name " + vipName + " does not have a scripted damage manager!");
+			EventHandlerManagerComponent eventComp = EventHandlerManagerComponent.Cast(vip.FindComponent(EventHandlerManagerComponent));
+			if(!eventComp) {
+				Print("VIP with name " + vipName + " does not have a event handler manager!");
 				continue;
 			}
 			
 			countVips++;
 			
-			damageManager.GetOnDamageStateChanged().Insert(OnVipKilled);
+			eventComp.RegisterScriptHandler("OnDestroyed", vip, OnVipKilled);
 		}
 	}
 	
-	void OnVipKilled(EDamageState state)
+	void OnVipKilled(IEntity destroyedEntity)
 	{
 		// Note that we cannot check WHICH VIP died. We just know one of them did.
-		Print("Vip damage state changed");
+		Print("Vip killed");
 		
-		// we only want to count destroyed entities :)
-		if(state != EDamageState.DESTROYED) return;
+		EventHandlerManagerComponent eventComp = EventHandlerManagerComponent.Cast(destroyedEntity.FindComponent(EventHandlerManagerComponent));
+		eventComp.RemoveScriptHandler("OnDestroyed", destroyedEntity, OnVipKilled);
 		
 		countDead += 1;
 		if(countDead >= countVips)
