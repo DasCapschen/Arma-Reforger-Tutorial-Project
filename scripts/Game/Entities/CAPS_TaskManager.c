@@ -50,24 +50,18 @@ class CAPS_TaskManager : SCR_BaseTaskManager
 			return;
 		}
 		
-		IEntity child = GetChildren();
-		if(!child) 
-		{
-			Print("I have no children, did you add a Hierarchy component?", LogLevel.WARNING);
-			return;
-		}
+		Print("TaskList: " + m_aTaskList.Count(), LogLevel.WARNING);
 		
-		while(child)
+		// m_aTaskList comes from SCR_BaseTaskManager :)
+		foreach(SCR_BaseTask baseTask : m_aTaskList)
 		{
-			CAPS_TriggerTask task = CAPS_TriggerTask.Cast(child);
+			CAPS_TriggerTask task = CAPS_TriggerTask.Cast(baseTask);
 			if(task)
 			{
 				Faction taskFaction = facMan.GetFactionByKey(task.m_factionKey);
 				Print("Setting Faction for Task " + task.GetName() + " to " + task.m_factionKey);
 				SetTaskFaction(task, taskFaction);
 			}
-			
-			child = child.GetSibling();
 		}
 	}
 }
