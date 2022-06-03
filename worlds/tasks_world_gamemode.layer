@@ -1,4 +1,4 @@
-SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
+SCR_BaseGameMode A_GameMode : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/GameMode_Plain.et" {
  components {
   SCR_AutomaticRespawnHandlerComponent "{56B4EA4DA0EEFF85}" {
    m_iForcedFaction 0
@@ -19,7 +19,7 @@ SCR_BaseGameMode GameMode_Plain1 : "{1B76F75A3175E85C}Prefabs/MP/Modes/Plain/Gam
   }
  }
 }
-CAPS_TaskManager {
+CAPS_TaskManager B_TaskManager {
  components {
   Hierarchy "{5984F7D56615A030}" {
   }

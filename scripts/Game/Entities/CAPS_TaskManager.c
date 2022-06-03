@@ -4,10 +4,6 @@ class CAPS_TaskManagerClass : SCR_BaseTaskManagerClass
 	// prefab properties here
 }
 
-//------------------------------------------------------------------------------------------------
-/*!
-	Class generated via ScriptWizard.
-*/
 class CAPS_TaskManager : SCR_BaseTaskManager
 {
 	override void EOnInit(IEntity owner)
@@ -40,7 +36,6 @@ class CAPS_TaskManager : SCR_BaseTaskManager
 		}
 	}
 	
-	// TODO: we could cache the tasks instead of iterating children again. Not sure how expensive it is...
 	protected void SetFactionForTasks()
 	{
 		FactionManager facMan = GetGame().GetFactionManager();

@@ -22,10 +22,6 @@ class CAPS_TriggerTaskSupportClass : SCR_EditorTaskSupportClass
 	}
 };
 
-//------------------------------------------------------------------------------------------------
-/*!
-	Class generated via ScriptWizard.
-*/
 class CAPS_TriggerTask : SCR_TriggerTask
 {
 	[Attribute("", desc: "Faction to create this task for")]
